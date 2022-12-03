@@ -2,8 +2,26 @@ class Tree():
     def __init__(self):
         self.root = None
 
+    def inOrder(self, node):
+        if node is None: return
+
+        if node.getRight() is None and node.getLeft() is None:
+            print(node.getData())
+            return
+        
+        if node.getLeft() is None:
+            print(node.getData())
+            return self.inOrder(node.getRight())
+        
+        self.inOrder(node.getLeft())
+        print(node.getData())
+
+        if node.getRight() is not None:
+            return self.inOrder(node.getRight())
+
     def printInOrder(self):
-        pass
+        #dfs
+        self.inOrder(self.root)
 
     def printPostOrder(self):
         pass
