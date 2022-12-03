@@ -6,9 +6,14 @@ for i in range(0, 5):
     node = Node(i)
     list.Insert(node)
 
-list.Delete(4)
+
+
+list.Search(6)
+
+
 
 node = Node(20)
 list.Insert(node)
+
 
 list.printList()

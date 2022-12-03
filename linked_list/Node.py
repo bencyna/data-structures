@@ -16,3 +16,6 @@ class Node():
 
     def printData(self):
         print(self.data)
+
+    def getData(self):
+        return self.data

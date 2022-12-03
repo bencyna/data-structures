@@ -4,7 +4,17 @@ class LinkedList():
         self.tail = None
    
     def Search(self, data):
-        pass
+        current = self.head
+        index = 0
+
+        while current != None:
+            if current.getData() == data:
+                return index
+
+            index +=1
+            current = current.getNext()
+        
+        print("Data not in list")
 
     def Insert(self, node):
         if (self.head == None):
@@ -45,7 +55,6 @@ class LinkedList():
             current = current.next
 
 
-        
         print("index not found")
 
 
