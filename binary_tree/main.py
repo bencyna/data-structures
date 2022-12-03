@@ -6,3 +6,5 @@ tree = Tree()
 for i in range(0, 5):
     node = Node(i)
     tree.insert(node)
+
+

@@ -12,7 +12,30 @@ class Tree():
         pass
     
     def insert(self, node):
-        pass
+        if self.root is None:
+            self.root = node
+            return
+
+        currentNode = self.root
+        
+        while currentNode is not None:
+            if node.getData() > currentNode.getData():
+                if currentNode.getRight() is not None:
+                    currentNode = currentNode.getRight()
+                else:
+                    currentNode.setRight(node)
+                    return
+
+            else: 
+                if currentNode.getLeft() is not None:
+                    currentNode = currentNode.getLeft() 
+                else: 
+                    currentNode.setLeft(node)
+                    return
+        
+
+
+
 
     def search(self, number):
         pass
