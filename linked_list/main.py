@@ -4,4 +4,6 @@ from Node import Node
 list = LinkedList()
 for i in range(0, 5):
     node = Node(i)
-    list.insert(node)
+    list.Insert(node)
+
+list.printList()
