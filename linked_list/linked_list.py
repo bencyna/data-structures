@@ -58,10 +58,6 @@ class LinkedList():
         print("index not found")
 
 
-    def Sort(self):
-        pass
-
-
     def printList(self):
         current = self.head
         while current != None:
