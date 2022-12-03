@@ -20,3 +20,10 @@ class LinkedList():
 
     def Sort(self):
         pass
+
+
+    def printList(self):
+        current = self.head
+        while current != None:
+            current.printData()
+            current = current.next
