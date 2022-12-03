@@ -16,7 +16,38 @@ class LinkedList():
             self.tail = node
 
     def Delete(self, index):
-        pass
+        if (self.head == None):
+            print("Error, nothing to delete")
+        
+        current = self.head
+        prev = None
+        nodeNum = 1
+
+        if index == 0:
+            self.head = current.getNext()
+            if current == self.tail:
+                self.tail = None
+
+            del current
+            return
+
+        current = current.next
+        while current != None:
+            if index == nodeNum:
+                prev.setNext(current.getNext())
+                if current == self.tail:
+                    self.tail = prev
+
+                del current
+                return
+            nodeNum += 1
+            prev = current
+            current = current.next
+
+
+        
+        print("index not found")
+
 
     def Sort(self):
         pass

@@ -7,6 +7,10 @@ class Node():
     def setNext(self, node):
         self.next = node
 
+    def getNext(self):
+        return self.next
+
+
     def setPrev(self, node):
         self.prev = node
 
