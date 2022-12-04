@@ -1,3 +1,5 @@
+import collections
+
 class Tree():
     def __init__(self):
         self.root = None
@@ -23,11 +25,6 @@ class Tree():
         #dfs
         self.inOrder(self.root)
 
-    def printPostOrder(self):
-        pass
-
-    def printPreOrder(self):
-        pass
     
     def insert(self, node):
         if self.root is None:
@@ -56,7 +53,50 @@ class Tree():
 
 
     def search(self, number):
-        pass
+        if self.root is None: return None
+        q = collections.deque([self.root])
+        while len(q) > 0:
+            current = q.popleft()
+            if current.getData() == number:
+                return current
 
-    def delete():
-        pass
+            if current.getRight() is not None:
+                q.append(current.getRight())
+            if current.getLeft() is not None:
+                q.append(current.getLeft())
+
+            
+          
+        print("not found")
+        return
+
+
+    def delete(self, number):
+         current = self.root
+         parent = None
+         fromLeft = False
+
+         while current is not None:
+            curData = current.getData()
+            if curData == number:
+                if current.getLeft() is None and current.getRight() is None:
+                    if fromLeft:
+                        parent.setLeft(None)
+                    else:
+                        parent.setRight(None)
+                else: 
+                    #find the right most leaf
+                    pass
+            
+            if curData > number:
+                fromLeft = True
+                current = current.getLeft()
+            else:
+                fromLeft = False
+                current = current.getRight()
+        
+
+         print("not found")
+
+         def findRightLeafAndDelete(self, node, parent, fromLeft):
+            pass
