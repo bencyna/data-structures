@@ -3,7 +3,7 @@ import collections
 class Tree():
     def __init__(self):
         self.root = None
-
+    
     def inOrder(self, node):
         if node is None: return
 
@@ -25,28 +25,27 @@ class Tree():
         #dfs
         self.inOrder(self.root)
 
-    
+
     def insert(self, node):
         if self.root is None:
             self.root = node
             return
 
-        currentNode = self.root
+        q = collections.deque([self.root])
         
-        while currentNode is not None:
-            if node.getData() > currentNode.getData():
-                if currentNode.getRight() is not None:
-                    currentNode = currentNode.getRight()
-                else:
-                    currentNode.setRight(node)
-                    return
+        while len(q) > 0:
+            current = q.popleft()
+            if current.getLeft() is not None:
+                q.append(current.getLeft())
+            else:
+                current.setLeft(node)
+                return
 
-            else: 
-                if currentNode.getLeft() is not None:
-                    currentNode = currentNode.getLeft() 
-                else: 
-                    currentNode.setLeft(node)
-                    return
+            if current.getRight() is not None:
+                q.append(current.getRight())
+            else:
+                current.setRight(node)
+                return
         
 
 
