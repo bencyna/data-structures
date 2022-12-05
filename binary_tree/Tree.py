@@ -85,7 +85,8 @@ class Tree():
                         parent.setRight(None)
                 else: 
                     #find the right most leaf
-                    pass
+                    rightMostLeaf = findRightLeafAndDelete(self.head, None, False)
+                    
             
             if curData > number:
                 fromLeft = True
@@ -98,4 +99,15 @@ class Tree():
          print("not found")
 
          def findRightLeafAndDelete(self, node, parent, fromLeft):
-            pass
+            if node.getRight() == None and node.getLeft() == None:
+                if fromLeft:
+                    parent.setLeft(None)
+                elif parent is not None:
+                    parent.setRight(None)
+
+                return node
+
+            if node.getLeft() is None:
+                return findRightLeafAndDelete(node.getRight(), node, False)
+
+            return findRightLeafAndDelete(node.getLeft(), node, True)
