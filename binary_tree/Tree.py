@@ -71,11 +71,15 @@ class Tree():
 
 
     def delete(self, number):
-         current = self.root
-         parent = None
          fromLeft = False
 
-         while current is not None:
+         q = collections.deque([[self.root, None]])
+
+         while len(q) > 0:
+            current = q.popleft()
+            parent = current[1]
+            current = current[0]
+
             curData = current.getData()
             if curData == number:
                 if current.getLeft() is None and current.getRight() is None:
@@ -86,15 +90,17 @@ class Tree():
                 else: 
                     #find the right most leaf
                     rightMostLeaf = findRightLeafAndDelete(self.head, None, False)
-                    
+                    rightMostLeaf.setLeft(current.getLeft())
+                    rightMostLeaf.setRight(current.getRight())
             
-            if curData > number:
-                fromLeft = True
-                current = current.getLeft()
-            else:
-                fromLeft = False
-                current = current.getRight()
-        
+                return
+            
+            if current.getLeft() is not None:
+                q.append([current.getLeft(), current])
+            
+            if current.getRight() is not None:
+                q.append([current.getRight(), current])
+
 
          print("not found")
 
@@ -107,7 +113,7 @@ class Tree():
 
                 return node
 
-            if node.getLeft() is None:
-                return findRightLeafAndDelete(node.getRight(), node, False)
+            if node.getRight() is None:
+                return findRightLeafAndDelete(node.getLeft(), node, True)
 
-            return findRightLeafAndDelete(node.getLeft(), node, True)
+            return findRightLeafAndDelete(node.getRight(), node, False)
