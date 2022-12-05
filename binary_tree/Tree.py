@@ -89,7 +89,7 @@ class Tree():
                         parent.setRight(None)
                 else: 
                     #find the right most leaf
-                    rightMostLeaf = findRightLeafAndDelete(self.head, None, False)
+                    rightMostLeaf = self.findRightLeafAndDelete(self.root, None, False)
                     rightMostLeaf.setLeft(current.getLeft())
                     rightMostLeaf.setRight(current.getRight())
             
@@ -104,16 +104,16 @@ class Tree():
 
          print("not found")
 
-         def findRightLeafAndDelete(self, node, parent, fromLeft):
-            if node.getRight() == None and node.getLeft() == None:
-                if fromLeft:
-                    parent.setLeft(None)
-                elif parent is not None:
-                    parent.setRight(None)
+    def findRightLeafAndDelete(self, node, parent, fromLeft):
+        if node.getRight() == None and node.getLeft() == None:
+            if fromLeft:
+                parent.setLeft(None)
+            elif parent is not None:
+                parent.setRight(None)
 
-                return node
+            return node
 
-            if node.getRight() is None:
-                return findRightLeafAndDelete(node.getLeft(), node, True)
+        if node.getRight() is None:
+            return self.findRightLeafAndDelete(node.getLeft(), node, True)
 
-            return findRightLeafAndDelete(node.getRight(), node, False)
+        return self.findRightLeafAndDelete(node.getRight(), node, False)

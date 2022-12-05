@@ -9,6 +9,8 @@ for i in range(0, 15):
     tree.insert(node)
 
 num = Node(7)
+num2 = Node(7)
+tree.insert(num2)
 tree.insert(num)
 tree.delete(7)
 node = tree.search(7)
