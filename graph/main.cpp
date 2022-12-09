@@ -7,6 +7,8 @@ using namespace std;
 
 void BFS(vector<vector<int>> graph);
 
+void DFS(vector<vector<int>> graph, unordered_map<int, int> * seen, int cur);
+
 #include <map>
 
 int main() {
@@ -21,8 +23,11 @@ int main() {
             {6},
             {2},
         };
+    std::unordered_map<int, int> * seen;
 
     BFS(adjList);
+    DFS(adjList, seen, 0);
+
     return 0; 
 }
 
@@ -40,12 +45,26 @@ void BFS(vector<vector<int>> graph) {
         
         for (int i = 0; i < vertices.size(); i++) {
             // cout << "vertice: " << vertices[i] << endl;
-            if (seen.find(vertices[i]) == seen.end()) {
-                seen.insert({vertices[i], vertices[i]});
-                queue.push(vertices[i]);
+            if (seen.find(vertices.at(i)) == seen.end()) {
+                seen.insert({vertices.at(i), vertices.at(i)});
+                queue.push(vertices.at(i));
             }
         }
 
         cout << index << endl;
+    }
+}
+
+void DFS(vector<vector<int>> graph, unordered_map<int, int> * seen, int cur) {
+    if (seen->find(cur) != seen->end()) {
+        return;
+    }
+
+    cout << cur << endl;
+
+    seen->insert({cur, cur});
+
+    for (int i = 0; i < graph.size(); i++) {
+        DFS(graph, seen, graph.at(cur).at(i));
     }
 }
