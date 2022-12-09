@@ -23,11 +23,13 @@ int main() {
             {6},
             {2},
         };
-    std::unordered_map<int, int> * seen;
+    std::unordered_map<int, int> * seen = new unordered_map<int, int>();
 
     BFS(adjList);
     DFS(adjList, seen, 0);
 
+    delete seen;
+    
     return 0; 
 }
 
@@ -64,7 +66,7 @@ void DFS(vector<vector<int>> graph, unordered_map<int, int> * seen, int cur) {
 
     seen->insert({cur, cur});
 
-    for (int i = 0; i < graph.size(); i++) {
+    for (int i = 0; i < graph.at(cur).size(); i++) {
         DFS(graph, seen, graph.at(cur).at(i));
     }
 }
