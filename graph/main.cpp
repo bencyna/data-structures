@@ -22,6 +22,7 @@ int main() {
             {2},
         };
 
+    BFS(adjList);
     return 0; 
 }
 
@@ -35,12 +36,13 @@ void BFS(vector<vector<int>> graph) {
         int index = queue.front();
         vector<int> vertices = graph.at(index);
         queue.pop();
-        seen.insert(index, index);
+        seen.insert({index, index});
         
         for (int i = 0; i < vertices.size(); i++) {
-            if (seen.find(vertices[i]) != NULL) {
-                seen.insert(i, i);
-                queue.push(i);
+            // cout << "vertice: " << vertices[i] << endl;
+            if (seen.find(vertices[i]) == seen.end()) {
+                seen.insert({vertices[i], vertices[i]});
+                queue.push(vertices[i]);
             }
         }
 
