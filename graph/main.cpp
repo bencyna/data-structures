@@ -59,7 +59,7 @@ void BFS(vector<vector<int>> graph) {
 
 void DFS(vector<vector<int>> graph, unordered_map<int, int> * seen, int cur) {
     if (seen->find(cur) != seen->end()) {
-        return;
+        return; 
     }  
 
     cout << cur << endl;
