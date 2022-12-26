@@ -62,7 +62,7 @@ void DFS(vector<vector<int>> graph, unordered_map<int, int> * seen, int cur) {
         return; 
     }  
 
-    cout << cur << endl;
+    cout << cur << endl; 
 
     seen->insert({cur, cur});
 
